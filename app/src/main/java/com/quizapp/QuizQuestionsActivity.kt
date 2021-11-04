@@ -18,7 +18,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private var mSelectedOptionPosition: Int = 0
     private var mCorrectAnswers: Int = 0
-    private var results: ArrayList<Int>? = null
+    private var answer: Int = 0
 
     // TODO (STEP 3: Create a variable for getting the name from intent.)
     // START
@@ -40,7 +40,6 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         // END
 
         mQuestionsList = Constants.getQuestions()
-        results = arrayListOf()
 
         setQuestion()
 
@@ -81,21 +80,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                     Toast.makeText(this, "Please select an option", Toast.LENGTH_SHORT).show()
                 } else {
                     val question = mQuestionsList?.get(mCurrentPosition - 1)
-
-                    // This is to check if the answer is wrong
-//                    if (question!!.correctAnswer != mSelectedOptionPosition) {
-//                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
-//                    }
-//                    else {
-//                        mCorrectAnswers++
-//                    }
-
-                    // This is for correct answer
-//                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
-
-
-
-                    results!! += mSelectedOptionPosition
+                    answer += ( question!!.options[mSelectedOptionPosition - 1].second * question!!.pValue )
                     goToNextQuestion()
 
                     mSelectedOptionPosition = 0
@@ -120,7 +105,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 val intent =
                     Intent(this@QuizQuestionsActivity, ResultActivity::class.java)
                 intent.putExtra(Constants.USER_NAME, mUserName)
-                intent.putExtra(Constants.CORRECT_ANSWERS, computeAnswer(results!!))
+                intent.putExtra(Constants.CORRECT_ANSWERS, computeAnswer(answer))
                 intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                 startActivity(intent)
                 finish()
@@ -130,13 +115,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
-    private fun computeAnswer(results: ArrayList<Int>): Int {
+    private fun computeAnswer(result: Int): Int {
         //TODO: Compute Answer
-        var sum = 0
-        results.forEach { item ->
-            sum += item
-        }
-        return sum
+        return result + 5
     }
 
     /**
@@ -149,20 +130,42 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         defaultOptionsView()
 
         if (mCurrentPosition == mQuestionsList!!.size) {
-            btn_submit.text = "FINISH"
+            btn_submit.text = "TERMINAR"
         } else {
-            btn_submit.text = "SUBMIT"
+            btn_submit.text = "CONTINUAR"
         }
 
         progressBar.progress = mCurrentPosition
         tv_progress.text = "$mCurrentPosition" + "/" + progressBar.getMax()
 
         tv_question.text = question.question
-        iv_image.setImageResource(question.image)
-        tv_option_one.text = question.optionOne
-        tv_option_two.text = question.optionTwo
-        tv_option_three.text = question.optionThree
-        tv_option_four.text = question.optionFour
+        if (question.options.size > 0) {
+            tv_option_one.text = question.options[0].first
+            tv_option_one.visibility = View.VISIBLE
+        } else {
+            tv_option_one.visibility = View.INVISIBLE
+        }
+
+        if (question.options.size > 1) {
+            tv_option_two.text = question.options[1].first
+            tv_option_two.visibility = View.VISIBLE
+        } else {
+            tv_option_two.visibility = View.INVISIBLE
+        }
+
+        if (question.options.size > 2) {
+            tv_option_three.text = question.options[2].first
+            tv_option_three.visibility = View.VISIBLE
+        } else {
+            tv_option_three.visibility = View.INVISIBLE
+        }
+
+        if (question.options.size > 3) {
+            tv_option_four.text = question.options[3].first
+            tv_option_four.visibility = View.VISIBLE
+        } else {
+            tv_option_four.visibility = View.INVISIBLE
+        }
     }
 
     /**

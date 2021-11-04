@@ -3,10 +3,11 @@ package com.quizapp
 data class Question(
     val id: Int,
     val question: String,
-    val image: Int,
-    val optionOne: String,
-    val optionTwo: String,
-    val optionThree: String,
-    val optionFour: String,
-    val correctAnswer: Int
+    val options: ArrayList<Pair<String, Int> >,
+    val pValue: Int
+)
+
+data class Profile(
+    val profileName: String,
+    val profileDescription: String
 )
