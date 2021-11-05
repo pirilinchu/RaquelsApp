@@ -21,7 +21,7 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:textColor="#363A43"
-            android:textSize="20sp"
+            android:textSize="16sp"
             tools:text="¿Realiza una planificación sobre la administración de sus recursos, sobre la base de cómo los obtendrá, dónde los aplicará (sus inversiones y gastos) y una proyección de sus futuros ingresos?" />
 
         <ImageView

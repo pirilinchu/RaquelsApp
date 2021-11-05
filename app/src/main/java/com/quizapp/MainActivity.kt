@@ -1,6 +1,7 @@
 package com.quizapp
 
 import android.content.Intent
+import android.icu.text.IDNA
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
             if (et_name.text.toString().isEmpty()) {
 
-                Toast.makeText(this@MainActivity, "Please enter your email", Toast.LENGTH_SHORT)
+                Toast.makeText(this@MainActivity, "Por favor ingresa tu nombre.", Toast.LENGTH_SHORT)
                         .show()
             } else {
 
@@ -52,6 +53,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_info_2.setOnClickListener {
+            val intent = Intent(this, InfoActivity::class.java)
+            startActivity(intent)
 
         }
     }

@@ -49,15 +49,15 @@ object Constants {
 
         // 5
         val que5 = Question(
-            5, "Indique el valor de sus ingresos anuales en bolivianos:",
-            arrayListOf(Pair("X<= 25.968", 0), Pair("25.968 <X<=60.000", 1), Pair("X>60.000", 1) ), 8
+            5, "Indique el rango de sus ingresos anuales en bolivianos:",
+            arrayListOf(Pair("Menos de 25.968 Bs.", 0), Pair("Entre 25.968 Bs. y 60.000 Bs.", 1), Pair("Más de 60.000 Bs.", 1) ), 8
         )
 
         questionsList.add(que5)
 
         // 6
         val que6 = Question(
-            6, "¿Cuán estables son mis ingresos futuros?",
+            6, "¿Cuán estables son sus ingresos futuros?",
             arrayListOf(Pair("Inestables", 0), Pair("Estables", 1), Pair("Muy estables", 1) ), 8
         )
 
@@ -65,8 +65,8 @@ object Constants {
 
         // 7
         val que7 = Question(
-            7, "¿Tiene patrimonio (casas, terrenos, joyas, cuadros, etc.)? Indique una aproximación de su valor en Bs.:",
-            arrayListOf(Pair("X<= 35.000", 0), Pair("35000 <X<=70.000 ", 1), Pair("X>70.000 ", 1) ), 8
+            7, "¿Tiene patrimonio (casas, terrenos, joyas, cuadros, etc.)? Indique una aproximación de su valor en \$:",
+            arrayListOf(Pair("Menos de 5.000 \$.", 0), Pair("Entre 5.000 \$ - 80.000\$", 1), Pair("Más de 80.000 \$", 1) ), 8
         )
 
         questionsList.add(que7)

@@ -22,18 +22,18 @@
 
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_main2"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_main2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@android:color/white"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="5dp">
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="500dp">
+            android:layout_height="500dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
@@ -49,8 +49,8 @@
                     android:textColor="#7A8089"
                     android:textSize="16sp" />
             </LinearLayout>
-            </ScrollView>
-        </androidx.cardview.widget.CardView>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btn_ok"
