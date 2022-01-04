@@ -57,7 +57,7 @@ class ResultActivity : AppCompatActivity() {
         }
 
         btn_info.setOnClickListener {
-            showAlertDialog(correctAnswers)
+            showPDF(correctAnswers)
         }
     }
 
@@ -73,6 +73,12 @@ class ResultActivity : AppCompatActivity() {
         val alert: AlertDialog = alertDialog.create()
         alert.setCanceledOnTouchOutside(false)
         alert.show()
+    }
+
+    private fun showPDF(n: Int) {
+        val intent = Intent(this, InfoActivity::class.java)
+        intent.putExtra("PDF", Constants.getProfilePDF(n))
+        startActivity(intent)
     }
 
 }

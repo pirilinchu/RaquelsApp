@@ -180,4 +180,12 @@ object Constants {
         else if (n <= 67) getProfiles().find { profile -> profile.profileName == "Perfil moderado" }!!
         else getProfiles().find { profile -> profile.profileName == "Perfil arriesgado" }!!
     }
+
+    fun getProfilePDF(n: Int): String {
+        return when {
+            n <= 33 -> "Perfil_conservador.pdf"
+            n <= 67 -> "Perfil_moderado.pdf"
+            else -> "Perfil_arriesgado.pdf"
+        }
+    }
 }
